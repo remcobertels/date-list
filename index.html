@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DateList</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+
+<body> 
+
+  <ul id="menu">
+    <!-- <h2>Filters</h2>
+    <hr/> -->
+    <div id="selected"></div>
+
+    <h3>Type</h3>
+    <hr/>
+    <div id="type">
+      <button filter-name="Creatief" category="type" id="filterButton" onclick="moveButton(this)"><span>&#127912;</span> Creatief</button>
+      <button filter-name="Actief" category="type" id="filterButton" onclick="moveButton(this)"><span>&#127939;</span> Actief</button>
+      <button filter-name="Relaxed" category="type" id="filterButton" onclick="moveButton(this)"><span>&#128564;</span> Relaxed</button>
+      <button filter-name="Avontuur" category="type" id="filterButton" onclick="moveButton(this)"><span>&#127381;</span> Avontuur</button>
+      <button filter-name="Erop uit" category="type" id="filterButton" onclick="moveButton(this)"><span>&#128648;</span> Erop uit</button>
+      <button filter-name="Cultuur" category="type" id="filterButton" onclick="moveButton(this)"><span>&#127917;</span> Cultuur</button>
+      <button filter-name="Film/serie" category="type" id="filterButton" onclick="moveButton(this)"><span>&#127909;</span> Film/serie</button>
+    </div>
+
+    
+    <h3>Kenmerken</h3>
+    <hr/>
+    <div id="kenmerken">
+      <button filter-name="Indoor" category="kenmerken" id="filterButton" onclick="moveButton(this)"><span>	&#9748;</span> Indoor</button>
+      <button filter-name="Thuis" category="kenmerken" id="filterButton" onclick="moveButton(this)"><span>&#127969;</span> Thuis</button>
+      <button filter-name="Impulsief" category="kenmerken" id="filterButton" onclick="moveButton(this)"><span>&#9889;</span> Impulsief</button>
+      <button filter-name="Goedkoop" category="kenmerken" id="filterButton" onclick="moveButton(this)"><span>&#128184;</span> Goedkoop</button>
+      <button filter-name="Online" category="kenmerken" id="filterButton" onclick="moveButton(this)"><span>&#128187;</span> Online</button>
+    </div>
+
+    <h3>Tijdsduur</h3>
+    <hr/>
+    <div id="tijdsduur">
+      <button filter-name="Dag" category="tijdsduur" id="filterButton" onclick="moveButton(this)"><span>&#127749;</span> Dag</button>
+      <button filter-name="Dagdeel" category="tijdsduur" id="filterButton" onclick="moveButton(this)"><span>&#128198;</span> Dagdeel</button>
+      <button filter-name="Avond" category="tijdsduur" id="filterButton" onclick="moveButton(this)"><span>&#127747;</span> Avond</button>
+      <button filter-name="Snel" category="tijdsduur" id="filterButton" onclick="moveButton(this)"><span>&#9201;</span> Snel</button>
+    </div>
+  </ul>
+
+  <div id="myPopup" class="popup">
+    <div class="popup-content" id="page1">
+        <a class="newCard">
+      
+        <div id="newCardImage" style="background-image: url(https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png);">
+          <button id="editCard" onclick="imageInput()"><i class="fa-solid fa-pen"></i></button>
+        </div>
+          <article>
+            <div class="inputs">
+              <input type="text" id="nameInput" placeholder="Titel..." required>
+              <div class="underline-input"></div>
+            </div>
+
+            <div class="inputs">
+              <textarea id="descriptionInput" placeholder="Beschrijving..." name="w3review" rows="4" cols="50" maxlength="250"></textarea>
+              <div class="underline-input"></div>
+            </div>
+
+            <div class="popupControl">
+              <button id="closePopup" onclick="closePopup()">
+                Cancel
+              </button>
+              <button id="submitPopup" onclick="showPage2()">
+                Volgende 
+              </button>
+            </div>
+            
+          </article>
+
+
+          
+        </a>        
+    </div>
+
+    <div class="popup-content" id="page2" >
+      <a class="newCard">
+    
+        <article>
+          <h3 style="margin-top: 0;">Type</h3>
+          <hr/>
+
+          <div class="popupFilters">
+            <button filter-name="Creatief" class="tagButton"><span>&#127912;</span> Creatief</button>
+            <button filter-name="Actief" class="tagButton"><span>&#127939;</span> Actief</button>
+            <button filter-name="Relaxed" class="tagButton"><span>&#128564;</span> Relaxed</button>
+            <button filter-name="Avontuur" class="tagButton"><span>&#127381;</span> Avontuur</button>
+            <button filter-name="Erop uit" class="tagButton"><span>&#128648;</span> Erop uit</button>
+            <button filter-name="Cultuur" class="tagButton"><span>&#127917;</span> Cultuur</button>
+            <button filter-name="Film/serie" class="tagButton"><span>&#127909;</span> Film/serie</button>  
+          </div>
+
+          <h3>Kenmerken</h3>
+          <hr/>
+
+          <div class="popupFilters">
+            <button filter-name="Indoor" class="tagButton"><span>	&#9748;</span> Indoor</button>
+            <button filter-name="Thuis" class="tagButton"><span>&#127969;</span> Thuis</button>
+            <button filter-name="Impulsief" class="tagButton"><span>&#9889;</span> Impulsief</button>
+            <button filter-name="Goedkoop" class="tagButton"><span>&#128184;</span> Goedkoop</button>
+            <button filter-name="Online" class="tagButton"><span>&#128187;</span> Online</button>
+          </div>
+
+          <h3>Tijd</h3>
+          <hr/>
+
+          <div class="popupFilters">
+            <button filter-name="Dag" class="tagButton"><span>&#127749;</span> Dag</button>
+            <button filter-name="Dagdeel" class="tagButton"><span>&#128198;</span> Dagdeel</button>
+            <button filter-name="Avond" class="tagButton"><span>&#127747;</span> Avond</button>
+            <button filter-name="Snel" class="tagButton"><span>&#9201;</span> Snel</button>
+    
+          </div>
+
+          <div class="popupControl" style="margin-top: 60px;">
+            <button id="closePopup" onclick="showPage1()">
+              Vorige
+            </button>
+            <button id="submitPopup" onclick="submitDate()">
+              Voeg toe
+            </button>
+          </div>
+        </article>
+        
+        
+      </a> 
+  </div>
+</div>
+
+  <div id="header">
+    <div id="headerContainer">
+      <div id="menuToggle">
+
+        <input type="checkbox" id="menuButton"/>
+        
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul></ul>
+
+      </div>
+  
+
+      <h1 id="title">DateList</h1>
+      <button id="addDate" onclick="openPopup()"><h1>Date <i class="fa-solid fa-plus"></i></h1></button>
+    </div>
+  </div>
+
+  <div id="dataContainer">
+
+    <div class="item-1">
+      <a href="" class="card">
+        <div class="thumb" style="background-image: url(https://dinosaurland.es/wp-content/uploads/elementor/thumbs/06-Triceratops-qm420fxdm1o9aky2baov2wfcx3dlrhy0y0ti6gagao.jpg);"></div>
+        <article>
+          <h1>Dino's Spotten & Picknick</h1>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-2">
+      <a href="" class="card">
+      
+      <div class="thumb" style="background-image: url(https://cdn.europosters.eu/image/750/posters/cars-characters-i33475.jpg);"></div>
+        <article>
+          <h1>Cars Movie Date</h1>
+          <p>Roadtrip, naar de sterren kijken en van Cars genieten onder een dekentje.</p>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-3">
+      <a href="" class="card">
+        <div class="thumb" style="background-image: url(https://cdn.britannica.com/51/194651-050-747F0C18/Interior-National-Gallery-of-Art-Washington-DC.jpg);"></div>
+        <article>
+          <h1>Museum Date</h1>
+          <p>Schetsboek meenemen en proberen onze eigen kunst in het museum te krijgen.</p>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-4">
+      <a href="" class="card">
+        <div class="thumb" style="background-image: url(https://cdn.hswstatic.com/gif/gettyimages-1401374620.jpg);"></div>
+        <article>
+          <h1>Lammetjes aaien</h1>
+          <p>Tussen de schaapjes liggen in de Heide en genieten van zachte knuffels.</p>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-5">
+      <a href="" class="card">
+        <div class="thumb" style="background-image: url(https://i.insider.com/62212e77d72a250019740059?width=700);"></div>
+        <article>
+          <h1>Fancy Fast Food Date</h1>
+          <p>Zoek de meest fancy outfits uit en probeer geen McFlurry op ze te knoeien.</p>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-6">
+      <a href="" class="card">
+        <div class="thumb" style="background-image: url(https://livefitgym.com/wp-content/uploads/2024/02/Screenshot-2024-02-07-211806.png);"></div>
+        <article>
+          <h1>Gym Date</h1>
+          <p>De kussentjes moeten toch op een manier getraind worden.</p>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+    <div class="item-7">
+      <a href="" class="card">
+        <div class="thumb" style="background-image: url(https://brainporteindhoven.com/fileadmin/_processed_/f/2/csm_TUe_a2a7bf4a4c.jpg);"></div>
+        <article>
+          <h1>Overnachten op de uni</h1>
+          <p>Weer eens wat anders dan een nachtje doorhalen voor een tentamen.</p>
+          <span>Remco</span>
+        </article>
+      </a>
+    </div>
+  </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./connection.js"></script>
+</body>
+
+</html>

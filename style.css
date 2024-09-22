@@ -1,0 +1,634 @@
+html {
+  background: #f5f7f8;
+  font-family: system-ui;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px 0;
+  max-width: 100%;
+  /* overflow-x: hidden; */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  font-family: system-ui;
+  font-size: 16px;
+  color: #444;
+  resize:none;
+  width: 100%;
+}
+
+/*#region*/
+
+.popup {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,
+          0,
+          0,
+          0.4);
+  display: none;
+}
+
+.popup-content {
+  background-color: white;
+  margin: 86px auto 0 auto;
+  padding: 20px;
+  border: 1px solid #888888;
+  width: 90%;
+  max-width: 400px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.tagSelected{
+  background-color: #333;
+  color: white;
+}
+
+.tagButton:hover{
+  background-color: white;
+  color: #333;
+}
+
+.tagSelected:hover{
+  background-color: #333;
+  color: white;
+}
+
+.inputs{
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.inputs input{
+  height: 35px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+  font-weight: bold;
+  font-family: system-ui;
+}
+
+.inputs input::placeholder{
+  color: rgb(120, 113, 113);
+}
+
+.underline-input{
+  height: 2px;
+  width: 100%;
+  background-color: rgb(200, 189, 189);
+}
+
+.underline-input::before{
+  position: absolute;
+  content: "";
+  height: 2.2px;
+  border-radius: 3px;
+  width: 0%;
+  background: #444;
+  transition: all .3s ease; 
+}
+
+.inputs input:focus ~ .underline-input::before{
+  width: 90%;
+}
+
+.inputs textarea:focus ~ .underline-input::before{
+  width: 90%;
+}
+
+.newCard {
+  background: white;
+  text-decoration: none;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+  top: 0;
+  transition: all .1s ease-in;
+  
+  article {
+    padding: 20px 20px 0 20px;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #editCard{
+    margin: 10px;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+  }
+  #editcard:hover{
+    background-color: white;
+    color: #333;
+  }
+
+  #submitPopup{
+    float: right;
+    background-color: #333;
+    color: white;
+  }
+  #submitPopup:hover{
+    background-color: white;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+  }
+  
+  p {
+    flex: 1;
+    line-height: 1.4;
+  }
+  
+  span {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 2em 0 0 0;
+  }
+  
+  #newCardImage {
+    padding-bottom: 60%;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: right;
+  }
+}
+
+.popupControl {
+  width: 100%;
+  margin-top: auto;
+
+  button{
+  font-size: 16px;
+  padding: 10px 30px;
+  margin-top: 15px;}
+}
+
+/*#endregion*/
+/*#region*/
+
+#header {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+  text-align: right;
+}
+
+#headerContainer{
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display:flex;
+  height: 70px;
+  justify-content: center;
+}
+
+#title{
+  font-size: 1.6em;
+  margin-left: 10px;
+}
+
+#addDate{
+  
+  font-family: system-ui;
+  height: 50px;
+  margin: auto 0 auto auto; 
+  text-decoration: none;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #333;
+  padding: auto 0px;
+  border: 2px solid #333;
+
+  h1{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+#addDate:hover{
+  background-color: #333;
+  color: #fff;
+}
+
+/*#endregion*/
+/*#region*/
+
+#menuToggle
+{
+  margin: 0 16px;
+  padding: 0;
+  display: block;
+  top: -5px;
+
+  
+  z-index: 12;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+button {
+  background-color: white;
+  border: #333 2px solid;
+  color: #333;
+  padding: 10px 16px;
+  margin: 4px 2px;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: system-ui;
+  cursor: pointer;
+}
+
+#menu button{
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+button:hover {
+  background-color: #333;
+  color: white;
+}
+
+#selected button {
+  background-color: #333;
+  color: white;
+}
+
+#selected button:hover {
+  background-color: white;
+  color: #333;
+}
+
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+button i.fa-x {
+  position: relative;
+  right: -3px;
+  font-size: 12px; /* Adjust the size of the X */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: relative;
+  top: 18px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 20; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+.popupFilters{
+  button{
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  left: 5px;
+  bottom: 12px;
+  background: #333;
+  border-radius: 3px;
+  
+  z-index: 11;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*#endregion*/
+/*#region*/
+
+#menu
+{
+  position: fixed;
+  width: 300px;
+  height: 100vh;
+  margin: 0 0 0 -20px;
+  padding: 50px;
+  padding-top: 100px;
+  z-index: 10;
+  
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+#menu h3{
+  margin: 15px 5px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: system-ui;
+}
+
+#menu span{
+  font-size: 14px;
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+.select-menu {
+  max-width: 350px;
+  width: 100%;
+
+  .select-btn {
+      display: flex;
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      align-items: center;
+      cursor: pointer;
+      gap: 12px;
+      justify-content: space-between;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+      .select-title {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 20px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+      }
+
+      i {
+          font-size: 14px;
+          transition: all 0.3s ease;
+      }
+  }
+
+  &.active {
+      .select-btn {
+          i {
+              transform: rotate(-180deg);
+          }
+      }
+      .selcet-list {
+          display: block;
+      }
+  }
+  .selcet-list {
+      position: relative;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+      display: none;
+      .select-items {
+          display: flex;
+          cursor: pointer;
+          padding: 12px;
+          border-radius: 8px;
+          align-items: center;
+          gap: 12px;
+          background: #fff;
+          i {
+              font-size: 14px;
+          }
+          &:hover {
+              background: #F2F2F2;
+          }
+          .select-text {
+              font-size: 14px;
+              color: #333;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+          }
+      }
+  }
+}
+
+/*#endregion*/
+/*#region*/
+
+#dataContainer {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 80px;
+  
+  display: grid;
+  
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  
+  @media (min-width: 30em) {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  @media (min-width: 60em) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+.card {
+  background: white;
+  text-decoration: none;
+  color: #444;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  
+
+  position: relative;
+  top: 0;
+  transition: all .1s ease-in;
+    
+  &:hover {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+  }
+  
+  article {
+    padding: 20px;
+    flex: 1;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+  }
+  
+  p {
+    flex: 1;
+    line-height: 1.4;
+  }
+  
+  span {
+    /* font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 2em 0 0 0; */
+
+    background-color: white;
+    border: #c2c2c2 2px solid;
+    color: #c2c2c2;
+    margin: 4px 2px;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+    font-family: system-ui;
+  }
+  
+  .thumb {
+    padding-bottom: 60%;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+
+.item-1 {
+  @media (min-width: 60em) {
+    grid-column: 1 / span 2;
+    
+    h1 {
+      font-size: 24px;
+    }
+  }
+}
+
+#error {
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+
+/*#endregion*/
